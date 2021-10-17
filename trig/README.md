@@ -2,9 +2,7 @@
 
 ```sh
 $ go test -bench=.
-```
 
-```
 goos: linux
 goarch: amd64
 pkg: trig
@@ -19,9 +17,7 @@ ok      trig    3.724s
 
 ```sh
 $ go test
-```
 
-```
 FastSin Max Error: 0.0009201468244426358
 FastCos Max Error: 0.0009201468244426358
 PASS
