@@ -6,10 +6,12 @@ import (
 	"testing"
 )
 
-var Pi float64 = 3.14159265358979323
-var Tau float64 = float64(math.Pi) * 2
-var Inv_Pi float64 = 1 / math.Pi
-var Inv_Tau float64 = Inv_Pi * 0.5
+const (
+	Pi     = float64(math.Pi)
+	Tau    = Pi * 2
+	InvPi  = 1 / Pi
+	InvTau = InvPi * 0.5
+)
 
 func BenchmarkStdSine(b *testing.B) {
 	for i := 0; i < 10000000; i++ {
@@ -51,9 +53,9 @@ func TestFastCos(t *testing.T) {
 	fmt.Println("FastCos Max Error:", maxError)
 }
 func FastSin(radians float64) float64 {
-	var x float64 = radians - math.Floor((radians+Pi)*Inv_Tau)*Tau
+	var x float64 = radians - math.Floor((radians+Pi)*InvTau)*Tau
 
-	x = 4 * x * Inv_Pi * (math.FMA(-math.Abs(x), Inv_Pi, 1))
+	x = 4 * x * InvPi * (math.FMA(-math.Abs(x), InvPi, 1))
 	return x * math.FMA(0.224, math.Abs(x), 0.776)
 }
 
