@@ -8,9 +8,8 @@ import (
 
 const (
 	Pi     = float64(math.Pi)
-	Tau    = Pi * 2.0
-	HalfPi = Pi * 0.5
-	InvPi  = 1.0 / Pi
+	Tau    = Pi * 2
+	InvPi  = 1 / Pi
 	InvTau = InvPi * 0.5
 )
 
@@ -90,10 +89,9 @@ func TestFastAtan(t *testing.T) {
 
 func FastSin(radians float64) float64 {
 	var x float64 = radians - math.Floor((radians+Pi)*InvTau)*Tau
-	var absX float64 = math.Abs(x)
 
-	x = 4 * x * InvPi * (math.FMA(-absX, InvPi, 1))
-	return x * math.FMA(0.224, absX, 0.776)
+	x = 4 * x * InvPi * (math.FMA(-math.Abs(x), InvPi, 1))
+	return x * math.FMA(0.224, math.Abs(x), 0.776)
 }
 
 func FastCos(radians float64) float64 {
@@ -118,7 +116,7 @@ func FastAtan2(y float64, x float64) float64 {
 	t3 = t0 * t3
 
 	if math.Abs(y) > math.Abs(x) {
-		t3 = HalfPi - t3
+		t3 = math.FMA(Pi, 0.5, -t3)
 	}
 	if x < 0 {
 		t3 = Pi - t3
@@ -146,7 +144,7 @@ func FastAtan(y float64) float64 {
 	t1 = t0 * t1
 
 	if math.Abs(y) > 1.0 {
-		t1 = HalfPi - t1
+		t1 = math.FMA(Pi, 0.5, -t1)
 	}
 
 	if y < 0 {
