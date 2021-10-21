@@ -7,3 +7,7 @@
 ### trig/
 
 Benchmarks for trigonometric functions, includes approximations of functions to test speed and accuracy compared to standard library functions
+
+### math/
+
+Benchmarks for math functions
