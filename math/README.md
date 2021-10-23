@@ -4,14 +4,20 @@
 $ go test -bench=.
 
 Floor Tests 1: true 2: true 3: true
+Mod Tests 1: true 2: true 3: true
+Max Tests 1: true 2: true 3: true
 goos: linux
 goarch: amd64
 pkg: fastmath
 cpu: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
-BenchmarkStdMod-8         132207              9001 ns/op
-BenchmarkFastMod-8        758137              1331 ns/op
-BenchmarkStdFloor-8     886775138                1.336 ns/op
-BenchmarkFastFloor-8    896988750                1.331 ns/op
+BenchmarkStdMod-8         128118              8387 ns/op
+BenchmarkFastMod-8        857655              1294 ns/op
+BenchmarkStdFloor-8     929981188                1.299 ns/op
+BenchmarkFastFloor-8    924504414                1.288 ns/op
+BenchmarkStdMax-8       88428781                11.42 ns/op
+BenchmarkFastMax-8      869061790                1.429 ns/op
+BenchmarkStdAbs-8       836941008                1.425 ns/op
+BenchmarkFastAbs-8      858260697                1.432 ns/op
 PASS
-ok      fastmath        4.968s
+ok      fastmath        11.034s
 ```
