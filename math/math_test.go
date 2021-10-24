@@ -19,29 +19,29 @@ func TestFastMax(t *testing.T) {
 }
 
 func BenchmarkStdMod(b *testing.B) {
-	for x := 0.0; x < 1000.0; x++ {
-		for y := 0.0; y < float64(b.N); y++ {
+	for x := -100.0; x < 100.0; x += 0.3 {
+		for y := -float64(b.N) / 2; y < float64(b.N)/2; y += 0.3 {
 			math.Mod(x, y)
 		}
 	}
 }
 
 func BenchmarkFastMod(b *testing.B) {
-	for x := 0.0; x < 1000.0; x++ {
-		for y := 0.0; y < float64(b.N); y++ {
+	for x := -100.0; x < 100.0; x += 0.3 {
+		for y := -float64(b.N) / 2; y < float64(b.N)/2; y += 0.3 {
 			FastMod(x, y)
 		}
 	}
 }
 
 func BenchmarkStdFloor(b *testing.B) {
-	for x := 0.0; x < float64(b.N); x++ {
+	for x := 0.0; x < float64(b.N); x += 0.3 {
 		math.Floor(x)
 	}
 }
 
 func BenchmarkFastFloor(b *testing.B) {
-	for x := 0.0; x < float64(b.N); x++ {
+	for x := 0.0; x < float64(b.N); x += 0.3 {
 		FastFloor(x)
 	}
 }
@@ -65,13 +65,13 @@ func BenchmarkFastMax(b *testing.B) {
 }
 
 func BenchmarkStdAbs(b *testing.B) {
-	for x := 0.0; x < float64(b.N); x++ {
+	for x := -float64(b.N) / 2; x < float64(b.N)/2; x++ {
 		math.Abs(x)
 	}
 }
 
 func BenchmarkFastAbs(b *testing.B) {
-	for x := 0.0; x < float64(b.N); x++ {
+	for x := -float64(b.N) / 2; x < float64(b.N)/2; x++ {
 		FastAbs(x)
 	}
 }
